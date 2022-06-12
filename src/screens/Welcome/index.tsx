@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
 import {
   Button,
   ButtonText,
@@ -9,10 +8,14 @@ import {
   IntroImage,
   TextContainer,
 } from "./styles";
-import { useFonts, Poppins_900Black } from "@expo-google-fonts/poppins";
-import SplashScreen from "expo-splash-screen";
+import { useFonts } from "@expo-google-fonts/poppins";
+import { useNavigation } from "@react-navigation/native";
+import GradientView from "../../components/GradientView";
 
 export default () => {
+  const [name, setName] = useState("");
+  const navigation = useNavigation();
+
   const [loaded] = useFonts({
     PoppinsBold: require("../../../assets/fonts/Poppins/Poppins-Bold.ttf"),
     PoppinsLight: require("../../../assets/fonts/Poppins/Poppins-Light.ttf"),
@@ -23,25 +26,30 @@ export default () => {
   }
 
   return (
-    <Container>
-      <IntroImage
-        source={require("./../../../assets/introImage.png")}
-        resizeMode="contain"
-      />
-      <TextContainer>
-        <InitialText style={{ fontFamily: "PoppinsBold" }}>
-          What's your name?
-        </InitialText>
-        <InputText
-          style={{ fontFamily: "PoppinsLight" }}
-          value=""
-          placeholder="Type here..."
-          maxLength={15}
+    <GradientView>
+      <Container>
+        <IntroImage
+          source={require("./../../../assets/introImage.png")}
+          resizeMode="contain"
         />
-      </TextContainer>
-      <Button>
-        <ButtonText>Continue</ButtonText>
-      </Button>
-    </Container>
+        <TextContainer>
+          <InitialText style={{ fontFamily: "PoppinsBold" }}>
+            What's your name?
+          </InitialText>
+          <InputText
+            style={{ fontFamily: "PoppinsLight" }}
+            value={name}
+            onChangeText={(text) => setName(text)}
+            placeholder="Type here..."
+            maxLength={15}
+          />
+        </TextContainer>
+        <Button>
+          <ButtonText style={{ fontFamily: "PoppinsBold" }}>
+            Continue
+          </ButtonText>
+        </Button>
+      </Container>
+    </GradientView>
   );
 };
