@@ -2,7 +2,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import TaskList from "../../screens/TaskList";
 import Welcome from "../../screens/Welcome";
 
-const Stack = createNativeStackNavigator();
+export type RootParamList = {
+  Home: undefined;
+  TaskList: { username: string };
+};
+
+const Stack = createNativeStackNavigator<RootParamList>();
 
 export default () => {
   return (

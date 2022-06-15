@@ -1,10 +1,16 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { RootParamList } from "../../routes/Stack";
 
-export default () => {
+type Props = NativeStackScreenProps<RootParamList, "TaskList">;
+
+export default ({ route }: Props) => {
+  const { username } = route.params;
+
   return (
     <View>
-      <Text>OPa</Text>
+      <Text>{username}</Text>
     </View>
   );
 };

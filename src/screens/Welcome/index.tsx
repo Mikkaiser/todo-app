@@ -11,10 +11,12 @@ import {
 import { useFonts } from "@expo-google-fonts/poppins";
 import { useNavigation } from "@react-navigation/native";
 import GradientView from "../../components/GradientView";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootParamList } from "../../routes/Stack";
 
 export default () => {
   const [name, setName] = useState("");
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<RootParamList>>();
 
   const [loaded] = useFonts({
     PoppinsBold: require("../../../assets/fonts/Poppins/Poppins-Bold.ttf"),
@@ -44,7 +46,9 @@ export default () => {
             maxLength={15}
           />
         </TextContainer>
-        <Button>
+        <Button
+          onPress={() => navigation.navigate("TaskList", { username: name })}
+        >
           <ButtonText style={{ fontFamily: "PoppinsBold" }}>
             Continue
           </ButtonText>
