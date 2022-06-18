@@ -22,10 +22,10 @@ export const TextContainer = styled.View`
 export const InitialText = styled.Text`
   font-size: 25px;
   color: white;
+  font-family: "Poppins_700Bold";
 `;
 
 export const InputText = styled.TextInput`
-  font-size: 20px;
   background-color: white;
   color: grey;
   border-radius: 20px;
@@ -33,6 +33,7 @@ export const InputText = styled.TextInput`
   text-align: center;
   font-size: 15px;
   min-width: 70%;
+  font-family: "Poppins_400Regular";
 `;
 
 export const Button = styled.TouchableOpacity`
@@ -46,4 +47,5 @@ export const ButtonText = styled.Text`
   color: white;
   font-size: 20px;
   text-align: center;
+  font-family: "Poppins_700Bold";
 `;
