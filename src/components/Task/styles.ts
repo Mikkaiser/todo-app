@@ -7,7 +7,7 @@ export const TaskView = styled.View`
   padding: 15px;
   flex-direction: row;
   align-items: center;
-  margin: 5px 0;
+  margin: 7px 0;
 `;
 
 export const RadioCheck = styled.TouchableOpacity`
