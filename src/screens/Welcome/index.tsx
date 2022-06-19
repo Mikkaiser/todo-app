@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  AlertText,
   Button,
   ButtonText,
   Container,
@@ -15,7 +16,19 @@ import { RootParamList } from "../../routes/Stack";
 
 export default () => {
   const [name, setName] = useState("");
+  const [errorVisible, setErrorVisible] = useState(false);
   const navigation = useNavigation<NativeStackNavigationProp<RootParamList>>();
+
+  const handleNavigate = () => {
+    if (!name) return setErrorVisible(true);
+
+    navigation.navigate("TaskManagement", { username: name });
+  };
+
+  const handleNameEditing = (name: string) => {
+    setName(name);
+    setErrorVisible(false);
+  };
 
   return (
     <GradientView>
@@ -28,16 +41,13 @@ export default () => {
           <InitialText>What's your name?</InitialText>
           <InputText
             value={name}
-            onChangeText={setName}
+            onChangeText={handleNameEditing}
             placeholder="Type here..."
             maxLength={15}
           />
+          {errorVisible ? <AlertText>Name is required</AlertText> : null}
         </TextContainer>
-        <Button
-          onPress={() =>
-            navigation.navigate("TaskManagement", { username: name })
-          }
-        >
+        <Button onPress={handleNavigate}>
           <ButtonText>Continue</ButtonText>
         </Button>
       </Container>

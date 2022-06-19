@@ -14,8 +14,13 @@ export const IntroImage = styled.Image`
   height: 170px;
 `;
 
+export const AlertText = styled.Text`
+  color: #ff7396;
+  margin-top: 10px;
+  font-family: "Poppins_400Regular";
+`;
+
 export const TextContainer = styled.View`
-  justify-content: space-around;
   min-height: 100px;
   align-items: center;
 `;
@@ -24,6 +29,7 @@ export const InitialText = styled.Text`
   font-size: 25px;
   color: white;
   font-family: "Poppins_700Bold";
+  margin-bottom: 15px;
 `;
 
 export const InputText = styled.TextInput`

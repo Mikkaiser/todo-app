@@ -9,6 +9,8 @@ import {
 } from "@expo-google-fonts/poppins";
 import { Comfortaa_700Bold } from "@expo-google-fonts/comfortaa";
 import * as SplashScreen from "expo-splash-screen";
+import { SafeAreaView } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 export default function App() {
   SplashScreen.preventAutoHideAsync();
@@ -25,5 +27,10 @@ export default function App() {
 
   SplashScreen.hideAsync();
 
-  return <Routes />;
+  return (
+    <>
+      <StatusBar style="light" />
+      <Routes />
+    </>
+  );
 }

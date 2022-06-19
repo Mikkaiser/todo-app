@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useState } from "react";
-import { Text } from "react-native";
+import { ScrollView, Text } from "react-native";
 import {
   WelcomeText,
   InsertTaskView,
@@ -25,7 +25,7 @@ export default ({ route }: Props) => {
   const { username } = route.params;
 
   const handleAddTask = (task: string) => {
-    setTasks((oldTasks) => [...oldTasks, task]);
+    setTasks((oldTasks) => [task, ...oldTasks]);
     setTask("");
   };
 
@@ -39,6 +39,7 @@ export default ({ route }: Props) => {
             value={task}
             onChangeText={setTask}
             maxLength={50}
+            onSubmitEditing={() => handleAddTask(task)}
           />
           <InsertButton onPress={() => handleAddTask(task)}>
             <ImageButton

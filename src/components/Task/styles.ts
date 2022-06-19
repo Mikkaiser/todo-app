@@ -23,4 +23,5 @@ export const TaskText = styled.Text`
   font-size: ${RFValue(13)}px;
   font-family: "Comfortaa_700Bold";
   bottom: ${RFValue(2)}px;
+  max-width: ${RFValue(260)}px;
 `;
