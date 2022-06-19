@@ -2,6 +2,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
+  flex: 1;
   height: 80%;
   align-items: center;
   justify-content: space-around;
@@ -33,7 +34,7 @@ export const InputText = styled.TextInput`
   text-align: center;
   font-size: 15px;
   min-width: 70%;
-  font-family: "Poppins_400Regular";
+  font-family: "Poppins_300Light";
 `;
 
 export const Button = styled.TouchableOpacity`

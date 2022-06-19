@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import TaskList from "../../screens/TaskList";
+import TaskManagement from "../../screens/TaskManagement";
 import Welcome from "../../screens/Welcome";
 
 export type RootParamList = {
   Home: undefined;
-  TaskList: { username: string };
+  TaskManagement: { username: string };
 };
 
 const Stack = createNativeStackNavigator<RootParamList>();
@@ -16,7 +16,7 @@ export default () => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={Welcome} />
-      <Stack.Screen name="TaskList" component={TaskList} />
+      <Stack.Screen name="TaskManagement" component={TaskManagement} />
     </Stack.Navigator>
   );
 };

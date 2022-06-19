@@ -34,7 +34,9 @@ export default () => {
           />
         </TextContainer>
         <Button
-          onPress={() => navigation.navigate("TaskList", { username: name })}
+          onPress={() =>
+            navigation.navigate("TaskManagement", { username: name })
+          }
         >
           <ButtonText>Continue</ButtonText>
         </Button>
