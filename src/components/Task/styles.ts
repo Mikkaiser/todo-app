@@ -1,7 +1,8 @@
 import { RFValue } from "react-native-responsive-fontsize";
 import styled from "styled-components/native";
+import { AntDesign } from "@expo/vector-icons";
 
-export const TaskView = styled.View`
+export const TaskView = styled.TouchableOpacity`
   background-color: #037ee9;
   border-radius: 10px;
   padding: 15px;
@@ -16,6 +17,13 @@ export const RadioCheck = styled.TouchableOpacity`
   border-radius: 20px;
   background-color: white;
   margin-right: 10px;
+`;
+
+export const IconCheck = styled(AntDesign)`
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: ${RFValue(19)}px;
+  background-color: white;
 `;
 
 export const TaskText = styled.Text`

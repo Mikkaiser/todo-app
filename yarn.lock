@@ -1386,7 +1386,7 @@
   dependencies:
     cross-spawn "^7.0.3"
 
-"@expo/vector-icons@^13.0.0":
+"@expo/vector-icons@*", "@expo/vector-icons@^13.0.0":
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/@expo/vector-icons/-/vector-icons-13.0.0.tgz#e2989b85e95a82bce216f88cf8fb583ab050ec95"
   integrity sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==
@@ -1778,6 +1778,13 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
+
+"@types/expo__vector-icons@^10.0.0":
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/@types/expo__vector-icons/-/expo__vector-icons-10.0.0.tgz#a203b7023465632f44bab36c091cf7f9437af794"
+  integrity sha512-Mwz3/1Gx5fZZ4KC9p4KVwsIsNLkTOCIbQCtUgOsID152c2CnBz7sHLjOqmRfUpolEShjCQDwJoH47/Q0Eyecjg==
+  dependencies:
+    "@expo/vector-icons" "*"
 
 "@types/graceful-fs@^4.1.2":
   version "4.1.5"
