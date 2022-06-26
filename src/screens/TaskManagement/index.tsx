@@ -17,24 +17,24 @@ import {
 import GradientView from "../../components/GradientView";
 import { RootParamList } from "../../routes/Stack";
 import TasksList from "../../components/TasksList";
-import { AntDesign, createMultiStyleIconSet } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Props = NativeStackScreenProps<RootParamList, "TaskManagement">;
 
 export default ({ route }: Props) => {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState<string[]>([]);
-  const [showCheckIcon, setShowCheckIcon] = useState<boolean>(false);
 
   const { username } = route.params;
 
-  const handleAddTask = (task: string) => {
+  const handleAddTask = async (task: string) => {
     setTasks((oldTasks) => [task, ...oldTasks]);
-    setTask("");
-  };
 
-  const handleShowIcon = () => {
-    setShowCheckIcon(true);
+    const stringfyObject = JSON.stringify(tasks);
+
+    await AsyncStorage.setItem("tasks", stringfyObject);
+
+    setTask("");
   };
 
   return (

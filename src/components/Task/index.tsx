@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { IconCheck, TaskText } from "./styles";
-import { TaskView } from "./styles";
-import { RadioCheck } from "./styles";
+import { IconCheck, TaskText, TaskView, RadioCheck } from "./styles";
 
 interface Props {
   taskTitle: string;
@@ -14,12 +12,11 @@ export default ({ taskTitle }: Props) => {
     setShowCheckIcon(!showCheckIcon);
   };
   return (
-    <TaskView onPress={handleShowIcon}>
-      {showCheckIcon ? (
-        <IconCheck name="checkcircle" size={24} color="lightgreen" />
-      ) : (
-        <RadioCheck onPress={handleShowIcon}></RadioCheck>
-      )}
+    <TaskView assigned={showCheckIcon} onPress={handleShowIcon}>
+      <RadioCheck assigned={showCheckIcon} onPress={handleShowIcon}>
+        {showCheckIcon ? <IconCheck name="check" color="#FFF" /> : null}
+      </RadioCheck>
+
       <TaskText>{taskTitle}</TaskText>
     </TaskView>
   );

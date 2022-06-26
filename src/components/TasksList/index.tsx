@@ -10,7 +10,7 @@ export default ({ tasks }: Props) => {
   return (
     <List
       data={tasks}
-      keyExtractor={(item) => `${(item as string) + new Date()}`}
+      keyExtractor={() => Math.random()}
       renderItem={({ item }) => {
         return <Task taskTitle={item as string} />;
       }}
