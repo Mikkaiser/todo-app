@@ -33,7 +33,7 @@ export default ({ route }: Props) => {
     const stringfyObject = JSON.stringify(tasks);
 
     await AsyncStorage.setItem("tasks", stringfyObject);
-
+    //TODO: TURN TASK STRUCTURE INTO A OBJECT
     setTask("");
   };
 
