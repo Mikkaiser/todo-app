@@ -1,18 +1,22 @@
 import React from "react";
+import { ITask } from "../../interfaces/task.interface";
 import Task from "../Task";
 import { List } from "./style";
 
 type Props = {
-  tasks: string[];
+  tasks: ITask[];
+  toggleTaskDone: (id: number) => void;
 };
 
-export default ({ tasks }: Props) => {
+export default ({ tasks, toggleTaskDone }: Props) => {
   return (
     <List
       data={tasks}
-      keyExtractor={() => Math.random()}
+      keyExtractor={(item) => String(item.id)}
       renderItem={({ item }) => {
-        return <Task taskTitle={item as string} />;
+        return (
+          <Task toggleTaskDone={toggleTaskDone} taskItem={item as ITask} />
+        );
       }}
     />
   );

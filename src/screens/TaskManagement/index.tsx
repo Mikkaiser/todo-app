@@ -4,9 +4,6 @@ import { ScrollView, Text } from "react-native";
 import {
   WelcomeText,
   InsertTaskView,
-  TextInput,
-  InsertButton,
-  ImageButton,
   TasksView,
   MyTasksTitle,
   ListView,
@@ -16,25 +13,34 @@ import {
 } from "./styles";
 import GradientView from "../../components/GradientView";
 import { RootParamList } from "../../routes/Stack";
+import { ITask } from "../../interfaces/task.interface";
+import TodoInput from "../../components/TodoInput";
 import TasksList from "../../components/TasksList";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Props = NativeStackScreenProps<RootParamList, "TaskManagement">;
 
 export default ({ route }: Props) => {
-  const [task, setTask] = useState("");
-  const [tasks, setTasks] = useState<string[]>([]);
+  const [tasks, setTasks] = useState<ITask[]>([]);
 
   const { username } = route.params;
 
-  const handleAddTask = async (task: string) => {
-    setTasks((oldTasks) => [task, ...oldTasks]);
+  const handleAddTask = async (taskTitle: string) => {
+    const data: ITask = {
+      id: Date.now(),
+      name: taskTitle,
+      done: false,
+    };
 
-    const stringfyObject = JSON.stringify(tasks);
+    setTasks((oldTasks) => [data, ...oldTasks]);
+  };
 
-    await AsyncStorage.setItem("tasks", stringfyObject);
-    //TODO: TURN TASK STRUCTURE INTO A OBJECT
-    setTask("");
+  const handleToggleTaskDone = (id: number) => {
+    setTasks((oldTasks) =>
+      oldTasks.map((task) => {
+        task.id == id ? (task.done = !task.done) : null;
+        return task;
+      })
+    );
   };
 
   return (
@@ -42,19 +48,7 @@ export default ({ route }: Props) => {
       <Container>
         <WelcomeText>What's up, {username}!</WelcomeText>
         <InsertTaskView>
-          <TextInput
-            placeholder="Type some task..."
-            value={task}
-            onChangeText={setTask}
-            maxLength={50}
-            onSubmitEditing={() => handleAddTask(task)}
-          />
-          <InsertButton onPress={() => handleAddTask(task)}>
-            <ImageButton
-              resizeMode="contain"
-              source={require("../../../assets/noBgArrow.png")}
-            />
-          </InsertButton>
+          <TodoInput handleAddTask={handleAddTask} />
         </InsertTaskView>
         <TasksView>
           <MyTasksTitle>My Tasks</MyTasksTitle>
@@ -64,7 +58,7 @@ export default ({ route }: Props) => {
             </NoTasksContainer>
           ) : (
             <ListView>
-              <TasksList tasks={tasks} />
+              <TasksList toggleTaskDone={handleToggleTaskDone} tasks={tasks} />
             </ListView>
           )}
         </TasksView>

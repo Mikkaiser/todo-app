@@ -1,23 +1,26 @@
 import React, { useState } from "react";
+import { ITask } from "../../interfaces/task.interface";
 import { IconCheck, TaskText, TaskView, RadioCheck } from "./styles";
 
 interface Props {
-  taskTitle: string;
+  taskItem: ITask;
+  toggleTaskDone: (id: number) => void;
 }
 
-export default ({ taskTitle }: Props) => {
-  const [showCheckIcon, setShowCheckIcon] = useState<boolean>(false);
-
-  const handleShowIcon = () => {
-    setShowCheckIcon(!showCheckIcon);
-  };
+export default ({ taskItem, toggleTaskDone }: Props) => {
   return (
-    <TaskView assigned={showCheckIcon} onPress={handleShowIcon}>
-      <RadioCheck assigned={showCheckIcon} onPress={handleShowIcon}>
-        {showCheckIcon ? <IconCheck name="check" color="#FFF" /> : null}
+    <TaskView
+      assigned={taskItem.done}
+      onPress={() => toggleTaskDone(taskItem.id)}
+    >
+      <RadioCheck
+        assigned={taskItem.done}
+        onPress={() => toggleTaskDone(taskItem.id)}
+      >
+        {taskItem.done ? <IconCheck name="check" color="#FFF" /> : null}
       </RadioCheck>
 
-      <TaskText>{taskTitle}</TaskText>
+      <TaskText>{taskItem.name}</TaskText>
     </TaskView>
   );
 };
